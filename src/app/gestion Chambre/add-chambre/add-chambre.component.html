@@ -1,0 +1,105 @@
+
+<!--<div class="col-lg-8">
+    <mat-card class="cardWithShadow">
+        <mat-card-content class="p-24">
+            <div class="d-flex w-100 table-responsive m-t-16 input-group mb-3">
+                <form (ngSubmit)="addChambre()" class="form-control">
+
+                    <label for="numeroChambre">Numéro Chambre:</label>
+                    <input type="number" id="numeroChambre" [(ngModel)]="chambre.numeroChambre" name="numeroChambre" class="mat-input-element" required
+                           min="1" max="500">
+
+                    <div *ngIf="!chambre.numeroChambre " class="alert alert-danger">
+                        <span class="font-weight-bold">Erreur :</span>
+                        <span>Le numéro de chambre est obligatoire.</span>
+                    </div>
+                    <div *ngIf="chambre.numeroChambre && (chambre.numeroChambre < 1 || chambre.numeroChambre > 500) " class="alert alert-danger">
+                        <span class="font-weight-bold">Erreur :</span>
+                        <span>Le numéro de chambre doit être un nombre entre 1 et 500.</span>
+                    </div>
+
+                    <label for="typeChambre">Type Chambre:</label>
+                    <select id="typeChambre" [(ngModel)]="chambre.typeChambre" name="typeChambre" class="mat-input-element" required>
+                        <option value="" disabled selected>Sélectionnez le type de chambre</option>
+                        <option *ngFor="let type of typeChambre" [value]="type">{{ type }}</option>
+                    </select>
+
+                    <div *ngIf="!chambre.typeChambre " class="alert alert-danger">
+                        <span class="font-weight-bold">Erreur :</span>
+                        <span>Le type de chambre est obligatoire.</span>
+                    </div>
+
+
+
+                    <button type="submit" mat-flat-button color="accent" class="w-10 bg-success">
+                        Ajouter Chambre
+                    </button>
+
+                    <div *ngIf="ajoutReussi" class="alert-success">Ajout avec succès !</div>
+                    <button type="submit" mat-flat-button color="accent" class="w-10 retour" (click)="hideAddChambre()">
+                        Cancel
+                    </button>
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+-->
+
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<h2>Ajouter Une Chambre</h2>
+<div class="col-lg-8">
+    <mat-card class="cardWithShadow">
+        <mat-card-content class="p-24">
+            <div class="w-100 table-responsive m-t-16 input-group mb-3">
+                <form [formGroup]="myForm" (ngSubmit)="addChambre()" class="form-control">
+
+                    <label for="numeroChambre">Numéro Chambre:</label>
+                    <input type="number" id="numeroChambre" formControlName="numeroChambre" class="mat-input-element" required
+                           min="1" max="500">
+
+                    <div *ngIf="myForm.get('numeroChambre')?.invalid && myForm.get('numeroChambre')?.touched"
+                         class="alert alert-danger">
+                        <span class="font-weight-bold">Erreur :</span>
+                        <span *ngIf="myForm.get('numeroChambre')?.hasError('required')">Le numéro de chambre est obligatoire.</span>
+                        <span *ngIf="myForm.get('numeroChambre')?.hasError('min') || myForm.get('numeroChambre')?.hasError('max')">
+              Le numéro de chambre doit être un nombre entre 1 et 500.
+            </span>
+                    </div>
+
+                    <label for="typeChambre">Type Chambre:</label>
+                    <select id="typeChambre" formControlName="typeChambre" class="mat-input-element" required>
+                        <option value="" disabled selected>Sélectionnez le type de chambre</option>
+                        <option *ngFor="let type of typeChambre" [value]="type">{{ type }}</option>
+                    </select>
+
+                    <div *ngIf="myForm.get('typeChambre')?.invalid && myForm.get('typeChambre')?.touched"
+                         class="alert alert-danger">
+                        <span class="font-weight-bold">Erreur :</span>
+                        <span *ngIf="myForm.get('typeChambre')?.hasError('required')">Le type de chambre est obligatoire.</span>
+                    </div>
+
+
+
+
+                    <button type="submit" mat-flat-button color="accent" class="w-10 bg-success">
+                        Ajouter Chambre
+                    </button>
+
+                    <div *ngIf="ajoutReussi" class="alert-success">Ajout avec succès !</div>
+                    <button type="submit" mat-flat-button color="accent" class="w-10 retour" routerLink="/Chambre">
+                        Cancel
+                    </button>
+
+
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+</body>
+</html>

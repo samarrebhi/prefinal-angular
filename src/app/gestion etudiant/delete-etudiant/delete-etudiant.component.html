@@ -1,0 +1,18 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <h2 fxLayout="column" fxLayoutAlign="center center">
+        Supprimer un Etudiant
+      </h2>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+<label id="cinsupp">Entrer le num CIN de l'étudiant à supprimer:</label>
+<input type="text"   [(ngModel)]="cinInput" />
+
+<button mat-flat-button color="warn" class="w-10" (click)="supprimer()">Supprimer</button>
+</mat-card-content>
+</mat-card>
+<button mat-flat-button color="primary" class="w-10"routerLink="/etudiant">
+  Retour
+</button>

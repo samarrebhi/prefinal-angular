@@ -1,0 +1,25 @@
+<router-outlet></router-outlet>
+<mat-card class="cardWithShadow" >
+    <mat-card-content class="p-5">
+      <div fxLayout="column" fxLayoutAlign="center center">
+      <div> <h2><b><mat-icon color="accent">update</mat-icon> Modifier un nouveau Bloc  </b></h2>  </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+<div *ngFor="let bloc of blocs">
+ 
+ <div style="padding: 15px;"><b>Nom Bloc:</b>
+    {{ bloc.nomBloc }} <b>Capacité Bloc :</b> {{ bloc.capaciteBloc }}
+    
+ 
+    <button mat-raised-button color="accent" type="Update Bloc"  (click)="updateBloc(bloc)">modifier Bloc</button>
+    <div></div>
+    <div></div>
+</div>
+  
+  
+</div>
+<hr>
+<div *ngIf="showUpdateBlocForm">
+  <app-updatebloc-input [bloc]="blocToUpdate" (notification)="handleNotification($event)"></app-updatebloc-input>
+</div>

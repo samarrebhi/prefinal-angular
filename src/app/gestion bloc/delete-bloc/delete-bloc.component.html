@@ -1,0 +1,18 @@
+
+<mat-card class="cardWithShadow" >
+  <mat-card-content class="p-5">
+    <div fxLayout="column" fxLayoutAlign="center center">
+    <div> <h2><b><mat-icon color="warn">remove_circle_outline</mat-icon> Suppression d'un Bloc  </b></h2>  </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<div>
+  <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <mat-label for="idBloc">ID du Bloc à Supprimer:</mat-label>
+      <input matInput type="number" id="idBloc" formControlName="idBloc" required>
+    </mat-form-field>
+
+    <button mat-stroked-button color="warn" type="submit">Supprimer Bloc</button>
+  </form>
+</div>

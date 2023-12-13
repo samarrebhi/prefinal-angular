@@ -1,0 +1,81 @@
+
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-24">
+    <div class="d-flex w-100"></div></mat-card-content>
+    <mat-card-content class="p-24">
+      <div class="d-flex w-100">
+        <!-- les bouttons du crud -->
+        <button mat-flat-button color="accent" class="w-10" routerLink="/etudiant/add-etudiant">Ajouter un Etudiant</button>
+        <button mat-flat-button color="primary" class="w-10"routerLink="/etudiant/update-etudiant">Modifier un Etudiant</button>
+        <button mat-flat-button color="warn" class="w-10" routerLink="/etudiant/delete-etudiant">Supprimer un Etudiant</button>
+      </div>
+    </mat-card-content>
+ 
+      <mat-card-content class="p-24">
+        <mat-form-field>
+          <input matInput  appFocusInput type="text" placeholder="Search" [(ngModel)]="search">
+        </mat-form-field>
+      </mat-card-content>
+  </mat-card>
+  <button mat-raised-button color="primary" (click)=" generateQRCodeForEtudiants()">Obtenir un QRcode</button>
+
+  <mat-card class="cardWithShadow">
+
+    <mat-card-content class="p-20">
+
+      <div class="d-flex w-10">
+        <!-- Etudiant Table -->
+        <div class="table-container">
+          <table class="table">
+            <thead>
+            <tr>
+              <!-- Titles -->
+              <th  class="table-header">Nom Etudiant</th>
+              <th class="table-header">Prenom Etudiant</th>
+              <th class="table-header">Cin</th>
+              <th class="table-header">Ecole</th>
+              <th class="table-header">Email</th>
+              <th class="table-header">Date de naissance</th>
+              <th class="table-header">Mot de passe</th>
+              <th class="table-header">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let Etudiant of Etudiants">
+              <!-- Filter based on search -->
+              <ng-container *ngIf="Etudiant.nomEt === search || search === ''">
+                <!-- Etudiant Details -->
+               
+                <td appColorChange class="table-cell">{{ Etudiant.nomEt }}</td>
+                <td  appColorChange class="table-cell">{{ Etudiant.prenomEt }}</td>
+                <td  appColorChange class="table-cell">{{ Etudiant.cin }}</td>
+                <td appColorChange class="table-cell">{{ Etudiant.ecole }}</td>
+                <td appColorChange class="table-cell">{{ Etudiant.email }}</td>
+                <td  appColorChange class="table-cell">{{ Etudiant.dateNaissance}}</td>
+                <td  appColorChange class="table-cell">{{ Etudiant.mdp}}</td>
+                <td class="table-cell">
+                  <div>
+                    <button
+                      mat-stroked-button
+                      class="flex-grow-1 d-flex align-items-center bg-success text-white"
+                      type="submit"
+                      value="Update etudiant"
+                      (click)="updateinput(Etudiant)"
+                    >
+                      Modifier
+                    </button>
+                  </div>
+              </ng-container>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <!-- Update Section -->
+    <div *ngIf="show">
+      <app-update-etudiant-input [etudiant]="etudianttoSelected" (updateetudiant)="changeTab($event)"></app-update-etudiant-input>
+    </div>
+ 
+  

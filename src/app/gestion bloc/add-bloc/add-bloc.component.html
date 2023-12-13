@@ -1,0 +1,33 @@
+
+<mat-card class="cardWithShadow" >
+  <mat-card-content class="p-5">
+    <div fxLayout="column" fxLayoutAlign="center center">
+    <div> <h2><b><mat-icon color="accent">add_circle</mat-icon> Ajouter un nouveau Bloc  </b></h2>  </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<form [formGroup]="blocForm" (ngSubmit)="onSubmit()" class="example-form">
+  <div>
+  <mat-form-field class="example-full-width">
+    <mat-label for="nomBloc">Nom Bloc</mat-label>
+    <input matInput type="text" id="nomBloc" name="nomBloc" formControlName="nomBloc" required>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <mat-label for="capaciteBloc">Capacité Bloc</mat-label>
+    <input matInput type="number" id="capaciteBloc" name="capaciteBloc" formControlName="capaciteBloc" required>
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <mat-label for="foyer">Assigner à Foyer</mat-label>
+    <mat-select id="foyer" name="foyer" formControlName="foyer" multiple>
+      <mat-option *ngFor="let f of foyers" [value]="f">{{ f.nomFoyer }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Ajouter Bloc</button>
+</div>
+</form>

@@ -1,0 +1,19 @@
+
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-24">
+    <h2 fxLayout="column" fxLayoutAlign="center center">
+        Scanner le QRcode pour obtenir la liste des étudiants
+      </h2>
+   
+      <button mat-flat-button color="accent" class="w-10"routerLink="/etudiant">
+        Retour
+      </button>
+      <mat-card class="cardWithShadow">
+        <mat-card-content class="p-24">
+  
+<div class="qr-code-container">
+    
+    <div [innerHtml]="qrCodeImage"></div>
+  </div>
+  <div> </div>
+ 

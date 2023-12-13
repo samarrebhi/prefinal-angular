@@ -1,0 +1,81 @@
+.bg{
+  background-color: #9fbae7;
+}
+.table-responsive table {
+  border-collapse: separate;
+  border-spacing: 20px;
+}
+.chambre{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin: 10px;
+
+}
+.mat-input-element {
+  border-color: gainsboro;
+  border-radius: 7px;
+  width:650px;
+  height: 35px;
+}
+
+
+button {
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: background-color 0.3s;
+}
+
+button.confirm-button {
+  background-color: #163a16;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+}
+
+button.cancel-button {
+  background-color: #fff;
+  color: #000;
+  justify-content: center;
+  align-items: center;
+}
+
+button.cancel-button:hover {
+  background-color: #eadcdc;
+}
+
+button.confirm-button:focus,
+button.cancel-button:focus {
+  outline: none;
+  background-color: #f38f8f;
+
+}
+
+.cardWithShadow.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 20px;
+  z-index: 9999;
+  background-color: #faf2f2;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn-danger{
+  background-color: #f38f8f;
+}
+.btn-primary{
+  background-color: #5d87ff;
+}

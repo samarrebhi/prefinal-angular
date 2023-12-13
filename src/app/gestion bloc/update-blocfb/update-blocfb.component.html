@@ -1,0 +1,29 @@
+
+<mat-card class="cardWithShadow" >
+    <mat-card-content class="p-5">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <div> <h2><b><mat-icon color="accent">update</mat-icon> Modifier un  Bloc  </b></h2>  </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<form (ngSubmit)="updateBloc()">
+    <!-- Your form fields for updating the bloc -->
+    <label><b>ID</b></label>
+    <input type="text" [(ngModel)]="bloc.idBloc" name="idBloc" disabled>
+
+    <label><b>Nom Bloc</b></label>
+    <input type="text" [(ngModel)]="bloc.nomBloc" name="nomBloc" minlength="4" required pattern="[a-zA-Z]+" #nomBloc="ngModel">
+    <div *ngIf="nomBloc.errors?.['minlength']"> BlocName must be at least 4
+        characters long. </div>
+    <div *ngIf="nomBloc.errors?.['pattern']">ONLY LETTERS.</div>
+
+
+    <label><b>Capacite Bloc</b></label>
+    <input type="number" [(ngModel)]="bloc.capaciteBloc" name="capaciteBloc" min="2" required #capaciteBloc="ngModel" pattern="[1-9]+">
+
+    <div *ngIf="capaciteBloc.errors?.['min']"> at least 2numbers.</div>
+    <div *ngIf="capaciteBloc.hasError('pattern')">Please enter a valid number.</div>
+
+    <button mat-raised-button color="primary" type="submit" type="Update Bloc"  >modifier Bloc</button>
+
+</form>

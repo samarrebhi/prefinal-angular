@@ -1,0 +1,98 @@
+<router-outlet></router-outlet>
+
+<button mat-flat-button color="primary" class="w-10" style="font-family: Tahoma;" routerLink="add">Ajouter un Bloc</button>
+<button mat-flat-button color="warn" class="w-10"style="font-family: Tahoma;"  routerLink="delete">Supprimer un bloc</button>
+<button mat-flat-button color="accent" class="w-10" style="font-family: Tahoma;"  routerLink="Update">Modifier un bloc</button>
+
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-20">
+    <div class="d-flex w-10">
+      <!-- Foyer Table -->
+      <div class="table-container " >
+        <table class="table" style="border: 1px solid #e7e1e1;">
+          <thead  >
+          <tr >
+            <!-- Titles -->
+
+             <th class="table-header" >id Bloc</th>
+            <th></th>
+            <th class="table-header">Nom Bloc</th>
+            <th></th>
+            <th class="table-header">Capacité Bloc</th>
+            <th></th>
+            <th class="table-header">num°des chambres associés</th>
+            <th></th>
+
+          </thead>
+          <tbody>
+          <tr *ngFor='let blocWithChambres of blocsWithChambres' appBlocdirective>
+            <td class="table-cell">{{ blocWithChambres.bloc.idBloc }}</td>
+             <span></span>
+              <td class="table-cell">{{ blocWithChambres.bloc.nomBloc }}</td>
+              <span></span>
+              <td class="table-cell">{{ blocWithChambres.bloc.capaciteBloc }}</td>
+              <span></span>
+              <!-- Bloc Details -->
+              <td class="table-cell">
+
+                    <span *ngFor='let chambre of blocWithChambres.chambres; let last = last'>
+                 {{ chambre.idChambre }}<span *ngIf="!last"> - </span>
+                    </span>
+
+
+              </td>
+              <td class="table-cell">
+                <div class="d-flex">
+                  <button mat-stroked-button class="w-10 d-flex align-items-center bg-success text-white" type="submit" value="Update Bloc" [routerLink]="['Update', blocWithChambres.bloc.idBloc ]">Update</button>
+
+                  <button mat-flat-button color="warn" class="w-10" (click)="OpenDialog(); deleteBloc(blocWithChambres.bloc.idBloc)">Delete</button>
+                </div>
+
+              </td>
+
+              <!-- Universite Details
+              <td class="table-cell">
+                <span *ngIf="foyer.universite">{{ foyer.universite.nomUniversite }}</span>
+                <span *ngIf="!foyer.universite">No Universite</span>
+              </td>
+  <head>Test</head>
+  <div *ngFor='let blocWithChambres of blocsWithChambres'>
+    <table>
+      <tr><td>********************************</td></tr>
+      <tr>
+        <td><b>id bloc</b></td>
+        <td>{{ blocWithChambres.bloc.idBloc }}</td>
+      </tr>
+      <tr>
+        <td><b>nom bloc</b></td>
+        <td>{{ blocWithChambres.bloc.nomBloc }}</td>
+      </tr>
+      <tr>
+        <td><b>capacite bloc</b></td>
+        <td>{{ blocWithChambres.bloc.capaciteBloc }}</td>
+      </tr>
+
+    </table>
+    <div *ngFor='let chambre of blocWithChambres.chambres'>
+      <table>
+        <tr><td>-----------------------</td></tr>
+        <tr>
+          <TD></TD>
+          <td>id chambre</td>
+          <td>{{ chambre.idChambre }}</td>
+        </tr>
+        <tr>
+          <TD></TD>
+          <td>numero chambre</td>
+          <td>{{ chambre.numeroChambre }}</td>
+        </tr>
+        <tr>
+          <TD></TD>
+          <td>type chambre</td>
+          <td>{{ chambre.typeChambre }}</td>
+        </tr>
+        <td>-----------------------</td>
+      </table>
+    </div>
+  </div>
+  -->

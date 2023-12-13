@@ -1,0 +1,88 @@
+<mat-card class="cardWithShadow" >
+  <mat-card-content class="p-24">
+    <div class="d-flex w-100">
+      <!-- Search Input -->
+      <input type="text" placeholder="Search" [(ngModel)]="search">
+      <button mat-flat-button color="accent" class="w-10" routerLink="/Foyer/add">Add Foyer</button>
+      <button mat-flat-button color="primary" class="w-10 ml-auto" (click)="downloadPDF()">Download PDF</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-20">
+    <div>
+      <!-- Foyer Table -->
+      <div class="table-container ">
+        <table class="table">
+          <thead>
+          <tr>
+            <th class="table-header">Nom Foyer</th>
+            <th class="table-header">Capacite Foyer</th>
+            <th class="table-header">Bloc name</th>
+            <th class="table-header">Universite</th>
+            <th>disponibilité</th>
+            <th class="table-header">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let foyer of displayedFoyers">
+            <td class="table-cell">{{ foyer.nomFoyer }}</td>
+            <td class="table-cell">{{ foyer.capaciteFoyer }}</td>
+            <td class="table-cell">
+                <span *ngIf="foyer.bloc && foyer.bloc.length > 0">
+                  <span *ngFor="let bloc of foyer.bloc; let last = last">
+                    {{ bloc.nomBloc }}<span *ngIf="!last"> / </span>
+                  </span>
+                </span>
+              <span *ngIf="!foyer.bloc || foyer.bloc.length === 0">No Bloc</span>
+            </td>
+            <td class="table-cell">
+              <span *ngIf="foyer.universite">{{ foyer.universite.nomUniversite }}</span>
+              <span *ngIf="!foyer.universite">No Universite</span>
+            </td>
+            <td class="table-cell">
+              <span *ngIf="isFoyerSaturated(foyer)">Saturé</span>
+              <span *ngIf="!isFoyerSaturated(foyer)">Places disponibles</span>
+            </td>
+            <td class="table-cell">
+              <div>
+                <button
+                  mat-stroked-button
+                  class="flex-grow-1 d-flex align-items-center bg-success text-white"
+                  type="submit"
+                  value="Update Foyer"
+                  (click)="update(foyer)"
+                >
+                  Update
+                </button>
+                <button
+                  mat-flat-button
+                  color="warn"
+                  class="flex-grow-1"
+                  (click)="deleteFoyerById(foyer.idFoyer)"
+                >
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <mat-paginator
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
+        (page)="onPageChange($event)"
+      ></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+<!-- Update Section -->
+
+  <div *ngIf="show">
+    <app-foyer-update [foyer]="usertoSelected" (updateUser)="changeTab($event)"></app-foyer-update>
+  </div>

@@ -1,0 +1,124 @@
+<mat-card class="cardWithShadow">
+   <mat-card-content class="p-24">
+      <h2 fxLayout="column" fxLayoutAlign="center center">
+        Modifier un Etudiant
+      </h2>
+    </mat-card-content>
+  </mat-card>
+
+ <mat-card class="cardWithShadow">
+   <mat-card-content class="p-24">
+      <label>Entrer le num CIN de l'étudiant à Modifier:</label>
+      <input type="text"  [(ngModel)]="cinInput" />
+ <button mat-flat-button color="primary" class="w-10" type="submit" (click)="trouver()">Trouver l'étudiant</button>
+</mat-card-content>
+</mat-card>
+ <button mat-flat-button color="accent" class="w-10"routerLink="/etudiant">
+   Retour
+ </button>
+
+ <mat-card-content  *ngIf="Etudiant" class="p-24">
+ <form  #form="ngForm" class="m-t-30">
+   
+     <mat-form-field appearance="outline" class="w-100">
+       <mat-label>Nom:</mat-label>
+       <input
+         matInput
+         [value]="Etudiant.nomEt" name="nomEt"  [(ngModel)]="Etudiant.nomEt" #nomEtEtudiant="ngModel"
+         required
+         minlength="6"
+         #prenomEtEtudiant="ngModel"
+       />
+       <mat-error *ngIf="prenomEtEtudiant.invalid && prenomEtEtudiant.touched">Required (Minimum length is 6 characters)</mat-error>
+     </mat-form-field>
+     <mat-form-field appearance="outline" class="w-100">
+       <mat-label>Prenom:</mat-label>
+       <input
+         matInput
+         [value]="Etudiant.prenomEt" name="nomEt"  [(ngModel)]="Etudiant.prenomEt" #prenomEtEtudiant="ngModel"
+         required
+         minlength="6"
+       />
+       <mat-error *ngIf="prenomEtEtudiant.invalid && prenomEtEtudiant.touched">Required (Minimum length is 6 characters)</mat-error>
+     </mat-form-field>
+ 
+     
+     <mat-form-field appearance="outline" class="w-80">
+       <mat-label>CIN:</mat-label>
+       <input
+         matInput
+         [value]="Etudiant.cin"
+         placeholder="Exemple: 121547"
+         [(ngModel)]="Etudiant.cin"
+         name="cin"
+         #cinEtudiant="ngModel"
+         required
+       />
+       <mat-error *ngIf="cinEtudiant.invalid && cinEtudiant.touched">
+         Cin is required
+       </mat-error>
+     </mat-form-field>
+     
+    
+     <mat-form-field appearance="outline" class="w-80">
+       <mat-label>Email:</mat-label>
+       <input
+         matInput
+         [value]="Etudiant.email"
+         placeholder="Exemple@gmail.com"
+         name="email"
+         [(ngModel)]="Etudiant.email"
+         #emailEtudiant="ngModel"
+         email="@"
+        
+       />
+       <mat-error *ngIf="emailEtudiant.invalid && emailEtudiant.touched">
+         <ng-container *ngIf="emailEtudiant.errors?.['email']">Invalid email format</ng-container>
+       </mat-error>
+     </mat-form-field>
+     
+    
+     
+  <mat-form-field appearance="outline" class="w-100">
+   <mat-label>Date de naissance:</mat-label>
+   <input
+     matInput
+     type="date"
+     placeholder="YYYY-MM-DD"
+     [value]="Etudiant.dateNaissance"
+     name="dateNaissance" [(ngModel)]="Etudiant.dateNaissance" #dateNaissanceEtudiant="ngModel"
+     ngModel appDisableButton
+   />
+ 
+ </mat-form-field>
+   
+     <mat-form-field appearance="outline" class="w-100">
+       <mat-label>Mot de passe:</mat-label>
+       <input
+         matInput
+         type="password"[value]="Etudiant.mdp"
+         placeholder="Mot de passe"
+         disabled
+       />
+       <span>Vous ne pouvez pas changer le mdp d'un Etudiant</span>
+      
+     </mat-form-field>
+     <mat-form-field appearance="outline" class="w-100">
+       <mat-label>Ecole:</mat-label>
+       <input
+         matInput
+         [value]="Etudiant.ecole" 
+         placeholder="Ecole sup de Tunis"
+         [(ngModel)]="Etudiant.ecole"
+         name="ecole"
+         #ecoleEtudiant="ngModel"
+         required
+       />
+       <mat-error *ngIf="ecoleEtudiant.invalid && ecoleEtudiant.touched">
+         Ecole is required
+       </mat-error>
+     </mat-form-field>
+     <button type="submit" mat-flat-button color="warn" class="w-10" (click)="onSubmit(form.value);show(form.value)">Enregistre la modification</button>
+   </form>
+ </mat-card-content>
+ 

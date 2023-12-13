@@ -1,0 +1,12 @@
+
+<form #f="ngForm">
+  <mat-label>ID</mat-label>
+  <input type="number" name="idBloc" [(ngModel)]="bloc.idBloc" disabled>
+  <mat-label>Nom Bloc</mat-label>
+  <input type="text" name="nomBloc" [(ngModel)]="bloc.nomBloc">
+  <mat-label>Capacite Bloc</mat-label>
+  <input type="number" name="capaciteBloc" [(ngModel)]="bloc.capaciteBloc">
+  
+  <button mat-raised-button color="accent" value="Update"  type="submit" (click)="updateBloc()">confirmer votre modification</button>
+
+</form>

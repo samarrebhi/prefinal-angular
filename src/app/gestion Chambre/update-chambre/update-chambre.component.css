@@ -1,0 +1,45 @@
+.form-control{
+    height: 450px;
+    width: 900px;
+}
+button {
+    margin-top: 15px;
+}
+label, input{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+.mat-input-element {
+    border-color:gainsboro;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+}
+.alert-success{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    font-size: 30px;
+    color : #163a16;
+}
+form{
+    position: relative;
+}
+.retour{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+}
+.alert-success{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    font-size: 30px;
+    color : #163a16;
+    background-color: #dff5df;
+    border-radius: 5px;
+    margin-top: 10px;
+}

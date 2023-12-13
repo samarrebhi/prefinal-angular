@@ -1,0 +1,139 @@
+
+<!--<div class="col-lg-8" >
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <div class=" d-flex w-100 table-responsive m-t-16 input-group mb-3">
+        <form [formGroup]="myForm" (ngSubmit)="updateChambre()" class="form-control ">
+
+          <label for="numeroChambre">Numéro Chambre:</label>
+          <input type="number" id="numeroChambre" formControlName="numeroChambre" class="mat-input-element " required>
+
+          <label for="typeChambre">Type Chambre:</label>
+          <input type="text" id="typeChambre" formControlName="typeChambre"  class="mat-input-element " required>
+
+          <label for="bloc">Nom Bloc:</label>
+          <input type="text" id="bloc" formControlName="bloc"  class="mat-input-element ">
+
+
+          <button type="submit" (click)="updateChambre();refresh()  " mat-flat-button color="accent" class="w-10 bg-success" >Update</button>
+
+          <div *ngIf="h" class="alert-success">Changement avec succès !</div>
+           <button type="submit" mat-flat-button color="accent" class="w-10 retour" routerLink="/Chambre" >Retour</button>
+         </form>
+       </div>
+     </mat-card-content>
+   </mat-card>
+ </div>
+
+
+<h2>Modifier la Chambre</h2>
+<div class="col-lg-8" >
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <div class=" d-flex w-100 table-responsive m-t-16 input-group mb-3">
+
+
+
+
+  <form [formGroup]="chambreForm" (ngSubmit)="updateChambre()">
+    <div class="form-group">
+      <label for="numeroChambre">Numéro Chambre:</label>
+      <input type="number" id="numeroChambre" formControlName="numeroChambre" class="mat-input-element " required>
+
+      <label for="typeChambre">Type Chambre:</label>
+      <input type="text" id="typeChambre" formControlName="typeChambre"  class="mat-input-element " required>
+    </div>
+
+
+
+
+    <button type="submit" (click)="updateChambre()  " mat-flat-button color="accent" class="w-10 bg-success" >Update</button>
+    <div *ngIf="modificationReussie" class="alert-success">Chambre Modifiée avec succès !</div>
+
+  </form>
+
+        <button type="submit" mat-flat-button color="accent" class="w-10 retour" routerLink="/Chambre" >Retour</button>
+</div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+-->
+<!--
+<h2>Modifier la Chambre</h2>
+<div class="col-lg-8">
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <div class="d-flex w-100 table-responsive m-t-16 input-group mb-3">
+        <form [formGroup]="chambreForm" (ngSubmit)="updateChambre()">
+          <div class="form-group">
+            <label for="numeroChambre">Numéro Chambre:</label>
+            <input type="number" id="numeroChambre" formControlName="numeroChambre" class="mat-input-element"
+                   required>
+
+            <label for="typeChambre">Type Chambre:</label>
+            <select id="typeChambre" formControlName="typeChambre" class="mat-input-element">
+              <option *ngFor="let type of typeChambre" [value]="type">{{ type }}</option>
+            </select>
+          </div>
+
+          <button type="submit" mat-flat-button color="accent" class="w-10 bg-success">Update</button>
+
+
+          <div *ngIf="modificationReussie" class="alert alert-success d-flex align-items-center" role="alert">Chambre Modifiée avec succès !</div>
+
+
+        </form>
+
+        <button type="submit" mat-flat-button color="accent" class="w-10 retour" routerLink="/Chambre">Retour</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+-->
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body><h2>Modifier la Chambre</h2>
+<div class="col-lg-8">
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <div class="d-flex w-100 table-responsive m-t-16 input-group mb-3">
+        <form [formGroup]="chambreForm" (ngSubmit)="updateChambre()">
+          <div class="form-group">
+            <label for="numeroChambre">Numéro Chambre:</label>
+            <input type="number" id="numeroChambre" formControlName="numeroChambre" class="mat-input-element"
+                   required min="1" max="500">
+
+            <div *ngIf="chambreForm.get('numeroChambre')?.invalid && chambreForm.get('numeroChambre')?.touched"
+                 class="alert alert-danger">
+              <span class="font-weight-bold">Erreur : Donnez le numero !</span>
+              <span *ngIf="chambreForm.get('numeroChambre')?.hasError('min') || chambreForm.get('numeroChambre')?.hasError('max')">
+                Le numéro de chambre doit être un nombre entre 1 et 500.
+              </span>
+            </div>
+
+            <label for="typeChambre">Type Chambre:</label>
+            <select id="typeChambre" formControlName="typeChambre" class="mat-input-element">
+              <option *ngFor="let type of typeChambre" [value]="type">{{ type }}</option>
+            </select>
+          </div>
+
+          <button type="submit"  mat-flat-button color="accent" class="w-10 bg-success">
+            Update
+          </button>
+
+          <div *ngIf="modificationReussie" class="alert alert-success d-flex align-items-center" role="alert">
+            Chambre Modifiée avec succès !
+          </div>
+        </form>
+
+        <button type="submit" mat-flat-button color="accent" class="w-10 retour" routerLink="/Chambre">Retour</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+</body>
+</html>
